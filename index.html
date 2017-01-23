@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js 动画插件</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.item {
+				width: 200px;
+				height: 200px;
+				margin-bottom: 20px;
+				background: dodgerblue;
+				opacity: .4;
+				filter: alpha(opacity=40);
+				border: 10px  solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		
+		<script src="animateJS.js"></script>
+		<script>
+			var items = document.getElementsByClassName('item');
+			
+			for (var i = 0; i < items.length; i++) {
+				items[i].onmouseover = function () {
+					animateJS(this, 'width', 1600, function () {
+						animateJS(this, 'opacity', 100);
+					});
+				};
+				items[i].onmouseout = function () {
+					animateJS(this, 'opacity', 40, function () {
+						animateJS(this, 'width', 200);
+					});
+				};
+			}
+		</script>
+	</body>
+</html>
